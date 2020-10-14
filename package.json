@@ -1,0 +1,29 @@
+{
+  "name": "full-stack-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "db:reset": "sequelize db:drop; sequelize db:create && sequelize db:migrate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ninankkim/full-stack-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ninankkim/full-stack-project/issues"
+  },
+  "homepage": "https://github.com/ninankkim/full-stack-project#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "connect-session-sequelize": "^7.0.3",
+    "express-es6-template-engine": "^2.2.3",
+    "nodemon": "^2.0.5"
+  }
+}
