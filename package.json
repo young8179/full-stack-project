@@ -1,13 +1,29 @@
 {
   "name": "full-stack-project",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "db:reset": "sequelize db:drop; sequelize db:create && sequelize db:migrate"
+    "db:reset": "sequelize db:drop; sequelize db:create && sequelize db:migrate && sequelize db:seed:all"
   },
+  "dependencies": {
+    "connect-session-sequelize": "^7.0.3",
+    "cookie-parser": "^1.4.5",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-es6-template-engine": "^2.2.3",
+    "express-session": "^1.17.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.5",
+    "pg": "^8.4.1",
+    "sequelize": "^6.3.5"
+  },
+  "description": "",
+  "main": "app.js",
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ninankkim/full-stack-project.git"
@@ -18,12 +34,5 @@
   "bugs": {
     "url": "https://github.com/ninankkim/full-stack-project/issues"
   },
-  "homepage": "https://github.com/ninankkim/full-stack-project#readme",
-  "dependencies": {
-    "bcrypt": "^5.0.0",
-    "body-parser": "^1.19.0",
-    "connect-session-sequelize": "^7.0.3",
-    "express-es6-template-engine": "^2.2.3",
-    "nodemon": "^2.0.5"
-  }
+  "homepage": "https://github.com/ninankkim/full-stack-project#readme"
 }
