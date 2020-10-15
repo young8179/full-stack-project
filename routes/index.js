@@ -1,12 +1,18 @@
 var express = require('express');
 var router = express.Router();
+const bcrypt = require("bcrypt");
+const db = require("../models")
 // const app = express();
 
-module.exports = router;
+
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', (req, res) => {
+  res.render('index', {
+    locals: {
+      error: null,
+    },
+  });
 });
 
 
@@ -14,18 +20,11 @@ const checkAuth = (req, res, next) => {
   if(req.session.user){
     next();
   }else{
-    res.redirect('/login');
+    res.redirect('/main');
   }
 }
 
-router.get('/', checkAuth, (req, res) => {
-  res.render('index', {
-    locals: {
-      user: req.session.user
-    }
-  });
-})
 
 
-
+module.exports = router;
 

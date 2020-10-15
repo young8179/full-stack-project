@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
       name: name,
       password: hash,
     }).then(user => {
-      res.redirect('/login');
+      res.redirect('/index');
     });
   });
 });
