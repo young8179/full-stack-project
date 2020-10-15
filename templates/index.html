@@ -5,6 +5,18 @@
     <link rel="stylesheet" href="/stylesheets/login.css">
 </head>
 <body>
-    
+    <h1>Login</h1>
+    <!-- ${ error ? `<em>${error}</em>`:""} -->
+    <form method="post">
+        <div>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <button type="submit">Login</button>
+    </form>
 </body>
 </html>
