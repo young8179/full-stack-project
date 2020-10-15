@@ -36,11 +36,7 @@ router.post('/', (req, res) => {
       name: name,
       password: hash,
     }).then(user => {
-<<<<<<< HEAD
-      res.redirect('/index');
-=======
       res.redirect('/');
->>>>>>> main
     });
   });
 });

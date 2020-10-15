@@ -1,12 +1,7 @@
 var express = require('express');
 var router = express.Router();
-<<<<<<< HEAD
-const bcrypt = require("bcrypt");
-const db = require("../models")
-=======
 const db = require("../models")
 const bcrypt = require("bcrypt");
->>>>>>> main
 // const app = express();
 
 
@@ -25,11 +20,7 @@ const checkAuth = (req, res, next) => {
   if(req.session.user){
     next();
   }else{
-<<<<<<< HEAD
-    res.redirect('/main');
-=======
     res.redirect('/');
->>>>>>> main
   }
 }
 
@@ -46,9 +37,6 @@ router.post('/', (req, res)=>{
   }
 
 
-<<<<<<< HEAD
-module.exports = router;
-=======
 db.User.findOne({
   where: {
     email:req.body.email
@@ -80,5 +68,4 @@ db.User.findOne({
     })
   })
 })
->>>>>>> main
 
