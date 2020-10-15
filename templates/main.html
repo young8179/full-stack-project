@@ -1,10 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    ${head}
-    <link rel="stylesheet" href="/stylesheets/login.css">
-</head>
+    <head>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+        <title>budget</title>
+    </head>
 <body>
-    
+       
+    <div class="container-fluid">
+        
+
+
+        <div class="row justify-content-between">
+            <div class="col-lg-5">
+                <div class="row ">
+                    <form action="" method="POST" class="col-12">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label for="budget" class="col-form-label">Budget</label>
+                                <input type="text" class="form-control" id="budget" name="budget">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="month" class="col-form-label">Month</label>
+                                <br>
+                                <select name="month" id="month" class="form-control">
+                                    <option disabled>Month</option>
+                                    <option>January</option>
+                                    <option>February</option>
+                                    <option>March</option>
+                                    <option>April</option>
+                                    <option>May</option>
+                                    <option>June</option>
+                                    <option>July</option>
+                                    <option>August</option>
+                                    <option>September</option>
+                                    <option>October</option>
+                                    <option>November</option>
+                                    <option>December</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <input class="col-lg-6" type="submit">
+                        </div>
+
+                    </form>
+                </div>  
+            </div>
+            <div class="col-lg-5">
+                <div class="row ">
+                    <form method="POST" class="col-12">
+                        <div class="row">
+
+                            <div class="col-lg-6">
+                                <label for="category" class="col-form-label">Category</label>
+                                <input type="text" class="form-control" id="category" name="category">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="expense" class="col-form-label">Expense</label>
+                                <input type="text" class="form-control" id="expense" name="expense">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <input class="col-lg-6" type="submit">
+                        </div>
+
+                    </form>
+                </div>  
+            </div>
+        </div>
+                            
+        <div class="row justify-content-center mt-5">
+            <div class="col-9 bg-success">
+                <ul>
+                    <li>hh</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+        
 </body>
 </html>
+   

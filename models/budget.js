@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'Budgets',
+    modelName: 'Budget',
   });
   return Budget;
 };
