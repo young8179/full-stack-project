@@ -6,10 +6,11 @@ const cookieParser = require('cookie-parser');
 const es6Renderer = require('express-es6-template-engine');
 const bcrypt = require("bcrypt");
 const session = require("express-session")
-// const SequelizeStore =
-//   require('connect-session-sequelize')(session.Store);
+
+const SequelizeStore =
+  require('connect-session-sequelize')(session.Store);
   
-// const store = new SequelizeStore({ db: db.sequelize })
+const store = new SequelizeStore({ db: db.sequelize })
 
 const app = express();
 app.use(bodyParser.json());
@@ -19,16 +20,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 const indexRouter = require('./routes/index'); //login
 const mainRouter = require('./routes/main');  //main
 const registerRouter = require('./routes/register');  //main
+app.use(cookieParser())
 
-// app.use(cookieParser())
-// app.use(session({
-//   secret: 'secret', // used to sign the cookie
-//   resave: false, // update session even w/ no changes
-//   saveUninitialized: true, // always create a session
-//   store: store
-
-// }))
-// store.sync()
+app.use(
+  session({
+    secret: 'secret', // used to sign the cookie
+    resave: false, // update session even w/ no changes
+    saveUninitialized: true, // always create a session
+    cookie: {
+      secure: false, // true: only accept https req’s
+      maxAge: 2592000, // time in seconds
+    }
+ })
+)
 
 app.engine('html', es6Renderer);
 app.set('views', 'templates');
