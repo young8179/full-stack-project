@@ -9,7 +9,7 @@ const bcrypt = require('bcrypt');
 //dasom wrote//
 /* GET users listing. */
 
-router.get('/register', (req, res) => {
+router.get('/', (req, res) => {
   res.render('register', {
     locals: {
       error: null,
@@ -17,7 +17,7 @@ router.get('/register', (req, res) => {
   });
 });
 
-router.post('/register', (req, res) => {
+router.post('/', (req, res) => {
   if (!req.body.email || !req.body.password) {
     res.render('register', {
       locals: {
