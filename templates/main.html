@@ -79,8 +79,12 @@
                     }).join("")
                 }
                 </ul>
+                
             </div>
-
+            <p>total: <span id="total">
+                ${ budgets.map((budget)=>{
+                    return `${ budget.amount_expense}`
+                })}</span></p>
         </div>
     </div>
         

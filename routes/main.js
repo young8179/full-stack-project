@@ -2,28 +2,38 @@ const express = require('express');
 const router = express.Router();
 const db = require("../models")
 
-function checkAuth(req, res, next){
-  if (req.session.user){
-    next()
-  }else {
-    res.redirect("/login")
-  }
-}
+// function checkAuth(req, res, next){
+//   if (req.session.user){
+//     next()
+//   }else {
+//     res.redirect("/login")
+//   }
+// }
 
-router.use("/*", checkAuth)
+// router.use("/*", checkAuth)
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   db.Expense.findAll()
-    .then(expenses=>{
+    .then((expenses, budgets)=>{
       res.render('main', {
         locals :{
           error: null,
-          expenses: expenses
+          expenses: expenses,
+          budgets: budgets
+          
         }
       })
       
     })
+    // .then(budgets=>{
+    //   res.render("main",{
+    //     locals:{
+    //       error: null,
+    //       budgets: budgets
+    //     }
+    //   })
+    // })
 });
 
 //===========================================================================
@@ -53,8 +63,30 @@ router.post("/expense", (req, res)=>{
     res.status(500).json({ error: "something wrong"})
   })
 })
-  
-  
+ //====================== 
+router.post("/budget", (req, res) => {
+  if(!req.body.budget || !req.body.month){
+    res.render("main", {
+      locals: {
+        error: "Please submit all required fields.",
+        budgets: null
+      }
+    })
+    return;
+  }
+  db.Budget.create({
+    amount_budget: req.body.budget,
+    month: req.body.month
+  })
+  .then((budget)=> {
+    res.redirect("/main")
+  })
+  .catch((error)=> {
+    console.error(error)
+    res.status(500).json({ error: "somethings wrong"})
+  })
+})
+
 
 
 
