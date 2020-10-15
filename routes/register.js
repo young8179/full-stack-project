@@ -3,6 +3,7 @@ var router = express.Router();
 const bcrypt = require('bcrypt');
 const db = require('../models');
 
+
 // router.get('/register', function(req, res, next) {
 //     res.send('respond with a resource');
 //   });
@@ -35,7 +36,7 @@ router.post('/', (req, res) => {
       name: name,
       password: hash,
     }).then(user => {
-      res.redirect('/login');
+      res.redirect('/');
     });
   });
 });
