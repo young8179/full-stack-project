@@ -5,27 +5,22 @@ var router = express.Router();
 module.exports = router;
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-
 const checkAuth = (req, res, next) => {
-  if(req.session.user){
+  if (req.session.user) {
     next();
-  }else{
+  } else {
     res.redirect('/login');
   }
-}
+};
 
 router.get('/', checkAuth, (req, res) => {
   res.render('index', {
     locals: {
-      user: req.session.user
-    }
+      user: req.session.user,
+    },
   });
-})
-
-
-
-
+});
