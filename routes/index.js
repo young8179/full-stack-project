@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+// const app = express();
+
+module.exports = router;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -7,5 +10,22 @@ router.get('/', function(req, res, next) {
 });
 
 
+const checkAuth = (req, res, next) => {
+  if(req.session.user){
+    next();
+  }else{
+    res.redirect('/login');
+  }
+}
 
-module.exports = router;
+router.get('/', checkAuth, (req, res) => {
+  res.render('index', {
+    locals: {
+      user: req.session.user
+    }
+  });
+})
+
+
+
+

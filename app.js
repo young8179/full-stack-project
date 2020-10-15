@@ -2,10 +2,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require("./models")
-// const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 const es6Renderer = require('express-es6-template-engine');
-// const bcrypt = require("bcrypt");
-// const session = require("express-session")
+const bcrypt = require("bcrypt");
+const session = require("express-session")
 // const SequelizeStore =
 //   require('connect-session-sequelize')(session.Store);
   
