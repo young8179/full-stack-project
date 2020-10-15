@@ -69,3 +69,4 @@ db.User.findOne({
   })
 })
 
+module.exports = router;
