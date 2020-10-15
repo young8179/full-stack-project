@@ -74,17 +74,14 @@
         <div class="row justify-content-center mt-5">
             <div class="col-9 bg-success">
                 <ul>
-                    ${ expenses.map((expense)=>{
+                    ${expenses && expenses.map((expense)=>{
                         return `<li> ${ expense.category } : ${ expense.amount_expense } </li> `
                     }).join("")
                 }
                 </ul>
                 
             </div>
-            <p>total: <span id="total">
-                ${ budgets.map((budget)=>{
-                    return `${ budget.amount_expense}`
-                })}</span></p>
+            <p>total: <span id="total">${ budgets ? budgets.amount_budget : ""}</span></p>
         </div>
     </div>
         
