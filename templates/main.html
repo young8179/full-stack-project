@@ -9,13 +9,13 @@
 <body>
        
     <div class="container-fluid">
-        
+        ${ error ? `<em>${error}</em>`: ""}
 
 
         <div class="row justify-content-between">
             <div class="col-lg-5">
                 <div class="row ">
-                    <form action="" method="POST" class="col-12">
+                    <form action="/main/budget" method="POST" class="col-12">
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="budget" class="col-form-label">Budget</label>
@@ -50,7 +50,7 @@
             </div>
             <div class="col-lg-5">
                 <div class="row ">
-                    <form method="POST" class="col-12">
+                    <form action="/main/expense" method="POST" class="col-12">
                         <div class="row">
 
                             <div class="col-lg-6">
@@ -74,10 +74,17 @@
         <div class="row justify-content-center mt-5">
             <div class="col-9 bg-success">
                 <ul>
-                    <li>hh</li>
+                    ${ expenses.map((expense)=>{
+                        return `<li> ${ expense.category } : ${ expense.amount_expense } </li> `
+                    }).join("")
+                }
                 </ul>
+                
             </div>
-
+            <p>total: <span id="total">
+                ${ budgets.map((budget)=>{
+                    return `${ budget.amount_expense}`
+                })}</span></p>
         </div>
     </div>
         

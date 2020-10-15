@@ -10,17 +10,39 @@ const db = require("../models")
 //   }
 // }
 
+// router.use("/*", checkAuth)
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('main')
+  db.Expense.findAll()
+    .then((expenses, budgets)=>{
+      res.render('main', {
+        locals :{
+          error: null,
+          expenses: expenses,
+          budgets: budgets
+          
+        }
+      })
+      
+    })
+    // .then(budgets=>{
+    //   res.render("main",{
+    //     locals:{
+    //       error: null,
+    //       budgets: budgets
+    //     }
+    //   })
+    // })
 });
 
 //===========================================================================
-router.post("/", (req, res)=>{
+router.post("/expense", (req, res)=>{
   if(!req.body.expense || !req.body.category){
     res.render("main", {
       locals: {
-        error: "really weird"
+        error: "really weird",
+        expenses: null
       }
     })
     return;
@@ -33,15 +55,38 @@ router.post("/", (req, res)=>{
   
   .then((expenses)=>{
     
-    res.json(expenses)
+    
+    res.redirect("/main")
   })
   .catch((error)=>{
     console.error(error)
     res.status(500).json({ error: "something wrong"})
   })
 })
-  
-  
+ //====================== 
+router.post("/budget", (req, res) => {
+  if(!req.body.budget || !req.body.month){
+    res.render("main", {
+      locals: {
+        error: "Please submit all required fields.",
+        budgets: null
+      }
+    })
+    return;
+  }
+  db.Budget.create({
+    amount_budget: req.body.budget,
+    month: req.body.month
+  })
+  .then((budget)=> {
+    res.redirect("/main")
+  })
+  .catch((error)=> {
+    console.error(error)
+    res.status(500).json({ error: "somethings wrong"})
+  })
+})
+
 
 
 

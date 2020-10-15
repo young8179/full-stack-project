@@ -19,7 +19,7 @@ router.get('/register', (req, res) => {
 
 router.post('/register', (req, res) => {
   if (!req.body.email || !req.body.password) {
-    res.render('main', {
+    res.render('register', {
       locals: {
         error: 'please submit all required fields',
       },
@@ -37,4 +37,5 @@ router.post('/register', (req, res) => {
     });
   });
 });
+
 module.exports = router;
