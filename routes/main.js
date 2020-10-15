@@ -13,27 +13,22 @@ const db = require("../models")
 // router.use("/*", checkAuth)
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   db.Expense.findAll()
-    .then((expenses, budgets)=>{
-      res.render('main', {
-        locals :{
-          error: null,
-          expenses: expenses,
-          budgets: budgets
-          
-        }
-      })
-      
+    .then((expenses) => {
+      db.Budget.findAll()
+        .then((budgets) => {
+          res.render('main', {
+            locals: {
+              error: null,
+              expenses: expenses,
+              budgets: budgets
+            }
+
+          })
+        })
+
     })
-    // .then(budgets=>{
-    //   res.render("main",{
-    //     locals:{
-    //       error: null,
-    //       budgets: budgets
-    //     }
-    //   })
-    // })
 });
 
 //===========================================================================
@@ -42,7 +37,8 @@ router.post("/expense", (req, res)=>{
     res.render("main", {
       locals: {
         error: "really weird",
-        expenses: null
+        expenses: null,
+        budgets: null
       }
     })
     return;
@@ -69,7 +65,8 @@ router.post("/budget", (req, res) => {
     res.render("main", {
       locals: {
         error: "Please submit all required fields.",
-        budgets: null
+        budgets: null,
+        expenses: null
       }
     })
     return;
