@@ -36,10 +36,10 @@ router.get("/", checkAuth, (req, res)=>{
             locals: {
               error: null,
               expenses: expenses,
-              budgets: budgets.amount_expense ? {
-                amount: budgets.amount_expense,
+              budgets:budgets && budgets.amount_budget ? {
+                amount: budgets.amount_budget,
                 total: total(expenses),
-                remaining: budgets.amount_expense - total(expenses)
+                remaining: budgets.amount_budget - total(expenses)
               }:null,
               user: req.session.user
             }
