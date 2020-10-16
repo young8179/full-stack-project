@@ -4,20 +4,13 @@ const db = require('../models');
 const bcrypt = require('bcrypt');
 // const app = express();
 
-
-
 /* GET home page. */
-<<<<<<< HEAD
-router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' });
-=======
 router.get('/', (req, res) => {
   res.render('index', {
     locals: {
       error: null,
     },
   });
->>>>>>> main
 });
 
 const checkAuth = (req, res, next) => {
@@ -28,26 +21,10 @@ const checkAuth = (req, res, next) => {
   }
 };
 
-<<<<<<< HEAD
-router.get('/', checkAuth, (req, res) => {
-  res.render('index', {
-    locals: {
-      user: req.session.user,
-    },
-  });
-});
-=======
->>>>>>> main
-
 router.post('/', (req, res) => {
   // console.log('\n\nLogin triggered\n\n')
-<<<<<<< HEAD
   if (!req.body.email || !req.body.password) {
-    res.render('/', {
-=======
-  if(!req.body.email || !req.body.password){
     res.render('index', {
->>>>>>> main
       locals: {
         error: 'Please submit all required fields',
       },
@@ -82,14 +59,8 @@ router.post('/', (req, res) => {
         });
       }
       return;
-<<<<<<< HEAD
     });
   });
 });
-=======
-    })
-  })
-})
 
 module.exports = router;
->>>>>>> main
