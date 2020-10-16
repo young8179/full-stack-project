@@ -27,12 +27,10 @@ app.use(
     secret: 'secret', // used to sign the cookie
     resave: false, // update session even w/ no changes
     saveUninitialized: true, // always create a session
-    cookie: {
-      secure: false, // true: only accept https req’s
-      maxAge: 2592000, // time in seconds
-    }
+    store: store
  })
 )
+store.sync()
 
 app.engine('html', es6Renderer);
 app.set('views', 'templates');
@@ -78,4 +76,3 @@ module.exports = app;
 app.listen(3000, function () { 
   console.log('budget API is now listening on port 3000...');
 });
-

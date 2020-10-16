@@ -9,8 +9,9 @@
 <body>
       <div><span>user</span></div> 
     <div class="container-fluid">
-        ${ error ? `<em>${error}</em>`: ""}
-
+        
+        <span>${ users.email }</span>
+        <a href="/">Logout</a>
 
         <div class="row justify-content-between">
             <div class="col-lg-5">
@@ -55,11 +56,11 @@
 
                             <div class="col-lg-6">
                                 <label for="category" class="col-form-label">Category</label>
-                                <input type="text" class="form-control" id="category" name="category">
+                                <input type="text" class="form-control" id="category" name="category" required>
                             </div>
                             <div class="col-lg-6">
                                 <label for="expense" class="col-form-label">Expense</label>
-                                <input type="text" class="form-control" id="expense" name="expense">
+                                <input type="text" class="form-control" id="expense" name="expense" required>
                             </div>
                         </div>
                         <div class="row justify-content-center">
@@ -75,7 +76,7 @@
             <div class="col-9 bg-success">
                 <ul>
                     ${expenses && expenses.map((expense)=>{
-                        return `<li> ${ expense.category } : ${ expense.amount_expense } </li> `
+                        return `<li> ${ expense.category } : ${ expense.amount_expense } <button id="${ expense.id }" type="button">x</button></li> `
                     }).join("")
                 }
                 </ul>

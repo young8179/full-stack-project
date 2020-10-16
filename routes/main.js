@@ -2,28 +2,40 @@ const express = require('express');
 const router = express.Router();
 const db = require("../models")
 
-// function checkAuth(req, res, next){
-//   if (req.session.user){
-//     next()
-//   }else {
-//     res.redirect("/login")
-//   }
-// }
-
+function checkAuth(req, res, next){
+  if (req.session.user){
+    next()
+  }else {
+    res.redirect("/login")
+  }
+}
+// router.get("/", checkAuth, (req, res)=>{
+//   res.render("main", {
+//     locals:{
+//       user:req.session.user
+//     }
+//   })
+// })
 // router.use("/*", checkAuth)
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
+router.get('/', checkAuth, function (req, res, next) {
+  
   db.Expense.findAll()
     .then((expenses) => {
       db.Budget.findAll()
         .then((budgets) => {
-          res.render('main', {
-            locals: {
-              error: null,
-              expenses: expenses,
-              budgets: budgets
-            }
+          db.User.findOne()
+            .then((users)=>{
+              
+              res.render('main', {
+                locals: {
+                  error: null,
+                  expenses: expenses,
+                  budgets: budgets,
+                  users: users
+                }
+            })
 
           })
         })
@@ -85,7 +97,11 @@ router.post("/budget", (req, res) => {
 })
 
 
-
+//logout===================================
+router.get("/logout", (req, res)=>{
+  req.session.user = null
+  res.redirect("/")
+})
 
 
 
