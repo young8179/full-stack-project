@@ -4,11 +4,15 @@ const db = require("../models")
 const bcrypt = require("bcrypt");
 // const app = express();
 
-module.exports = router;
+
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', (req, res) => {
+  res.render('index', {
+    locals: {
+      error: null,
+    },
+  });
 });
 
 
@@ -20,19 +24,11 @@ const checkAuth = (req, res, next) => {
   }
 }
 
-router.get('/', checkAuth, (req, res) => {
-  res.render('index', {
-    locals: {
-      user: req.session.user
-    }
-  });
-})
-
 
 router.post('/', (req, res)=>{
   // console.log('\n\nLogin triggered\n\n')
   if(!req.body.email || !req.body.password){
-    res.render('/', {
+    res.render('index', {
       locals: {
         error: 'Please submit all required fields'
       }
@@ -73,3 +69,4 @@ db.User.findOne({
   })
 })
 
+module.exports = router;
