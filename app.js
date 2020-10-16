@@ -1,41 +1,38 @@
-
 const express = require('express');
 const bodyParser = require('body-parser');
-const db = require("./models")
+const db = require('./models');
 const cookieParser = require('cookie-parser');
 const es6Renderer = require('express-es6-template-engine');
-const bcrypt = require("bcrypt");
-const session = require("express-session")
+const bcrypt = require('bcrypt');
+const session = require('express-session');
 
-const SequelizeStore =
-  require('connect-session-sequelize')(session.Store);
-  
-const store = new SequelizeStore({ db: db.sequelize })
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const store = new SequelizeStore({ db: db.sequelize });
 
 const app = express();
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
 const indexRouter = require('./routes/index'); //login
-const mainRouter = require('./routes/main');  //main
-const registerRouter = require('./routes/register');  //main
-app.use(cookieParser())
+const mainRouter = require('./routes/main'); //main
+const registerRouter = require('./routes/register'); //main
+app.use(cookieParser());
 
 app.use(
   session({
     secret: 'secret', // used to sign the cookie
     resave: false, // update session even w/ no changes
     saveUninitialized: true, // always create a session
-    store: store
- })
-)
-store.sync()
+    store: store,
+  })
+);
+store.sync();
 
 app.engine('html', es6Renderer);
 app.set('views', 'templates');
 app.set('view engine', 'html');
-
 
 app.use(express.static('./public'));
 // view engine setup
@@ -48,7 +45,7 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);   //login
+app.use('/', indexRouter); //login
 app.use('/main', mainRouter); //main
 app.use('/register', registerRouter);
 
@@ -70,9 +67,6 @@ app.use('/register', registerRouter);
 
 module.exports = app;
 
-
-
-
-app.listen(3000, function () { 
+app.listen(3000, function () {
   console.log('budget API is now listening on port 3000...');
 });
