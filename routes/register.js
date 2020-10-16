@@ -11,6 +11,8 @@ const db = require('../models');
 //dasom wrote//
 /* GET users listing. */
 
+
+
 router.get('/', (req, res) => {
   res.render('register', {
     locals: {

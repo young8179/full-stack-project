@@ -14,6 +14,7 @@ router.get('/', checkAuth, (req, res) => {
   db.Expense.findAll({
     where: {
       UserId: req.session.user.id,
+<<<<<<< HEAD
     },
     order: [['date', 'DESC']],
   }).then(expenses => {
@@ -42,6 +43,44 @@ router.get('/', checkAuth, (req, res) => {
     });
   });
 });
+=======
+    }, order: [
+      [
+        "date", "DESC"
+      ]
+    ]
+  })
+    .then((expenses) => {
+      db.Budget.findOne({
+        where: {
+          UserId: req.session.user.id,
+        }, order: [
+          [
+            "createdAt", "DESC"
+          ]
+        ]
+      })
+        .then((budgets) => {
+          console.log(total(expenses));
+          res.render('main', {
+            locals: {
+              error: null,
+              expenses: expenses,
+              budgets:budgets && budgets.amount_budget ? {
+                amount: budgets.amount_budget,
+                total: total(expenses),
+                remaining: budgets.amount_budget - total(expenses)
+              }:null,
+              user: req.session.user
+            }
+          })
+
+        })
+    })
+
+
+})
+>>>>>>> main
 // router.use("/*", checkAuth)
 
 /* GET users listing. */
