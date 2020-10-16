@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
-    "connect-session-sequelize": "^7.0.3",
+    "connect-session-sequelize": "^7.0.4",
     "cookie-parser": "^1.4.5",
     "debug": "~2.6.9",
     "express": "^4.16.4",
