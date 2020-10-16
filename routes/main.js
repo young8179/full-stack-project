@@ -18,8 +18,8 @@ router.get("/", checkAuth, (req, res)=>{
       res.render('main', {
         locals: {
           error: null,
-          expenses: expenses,
-          budgets: budgets,
+          expenses: req.session.expenses,
+          budgets: req.session.budgets,
           user:req.session.user
         }
             })
