@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Expense.belongsTo(models.Budget)
       Expense.belongsTo(models.User)
     }
   };
@@ -25,7 +24,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: null,
       type: DataTypes.STRING
-    }
+    },
+    date: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
   }, {
     sequelize,
     modelName: 'Expense',

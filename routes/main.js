@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require("../models")
+const total = require("../lib/total")
 
 function checkAuth(req, res, next){
   if (req.session.user){
@@ -10,22 +11,42 @@ function checkAuth(req, res, next){
   }
 }
 router.get("/", checkAuth, (req, res)=>{
-  db.Expense.findAll()
-  .then((expenses) => {
-    db.Budget.findAll()
-    .then((budgets) => {
-      
-      res.render('main', {
-        locals: {
-          error: null,
-          expenses: req.session.expenses,
-          budgets: req.session.budgets,
-          user:req.session.user
-        }
-            })
-  
+  db.Expense.findAll({
+    where: {
+      UserId: req.session.user.id,
+    }, order: [
+      [
+        "date", "DESC"
+      ]
+    ]
+  })
+    .then((expenses) => {
+      db.Budget.findOne({
+        where: {
+          UserId: req.session.user.id,
+        }, order: [
+          [
+            "createdAt", "DESC"
+          ]
+        ]
+      })
+        .then((budgets) => {
+          console.log(total(expenses));
+          res.render('main', {
+            locals: {
+              error: null,
+              expenses: expenses,
+              budgets: budgets.amount_expense ? {
+                amount: budgets.amount_expense,
+                total: total(expenses),
+                remaining: budgets.amount_expense - total(expenses)
+              }:null,
+              user: req.session.user
+            }
           })
+
         })
+    })
 
 
 })
@@ -35,10 +56,10 @@ router.get("/", checkAuth, (req, res)=>{
 
 //===========================================================================
 router.post("/expense", (req, res)=>{
-  if(!req.body.expense || !req.body.category){
+  if(!req.body.expense || !req.body.category || !req.body.date){
     res.render("main", {
       locals: {
-        error: "really weird",
+        error: "Please submit all required field.",
         expenses: null,
         budgets: null
       }
@@ -47,8 +68,9 @@ router.post("/expense", (req, res)=>{
   }
   db.Expense.create({
     category: req.body.category,
-    amount_expense: req.body.expense
-    
+    amount_expense: req.body.expense,
+    date: req.body.date,
+    UserId: req.session.user.id
   })
   
   .then((expenses)=>{
@@ -63,7 +85,7 @@ router.post("/expense", (req, res)=>{
 })
  //====================== 
 router.post("/budget", (req, res) => {
-  if(!req.body.budget || !req.body.month){
+  if(!req.body.budget){
     res.render("main", {
       locals: {
         error: "Please submit all required fields.",
@@ -75,7 +97,7 @@ router.post("/budget", (req, res) => {
   }
   db.Budget.create({
     amount_budget: req.body.budget,
-    month: req.body.month
+    UserId: req.session.user.id
   })
   .then((budget)=> {
     res.redirect("/main")

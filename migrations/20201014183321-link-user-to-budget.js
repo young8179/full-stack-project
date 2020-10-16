@@ -10,6 +10,7 @@ module.exports = {
      */
     await queryInterface.addColumn("Budgets", "UserId", {
       type: Sequelize.INTEGER,
+      allowNull: false,
       reference: {
         model: "Users",
         key: "id"

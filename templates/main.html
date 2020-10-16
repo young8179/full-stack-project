@@ -14,32 +14,13 @@
         <a href="/">Logout</a>
 
         <div class="row justify-content-between">
-            <div class="col-lg-5">
+            <div class="col-lg-4">
                 <div class="row ">
                     <form action="/main/budget" method="POST" class="col-12">
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="budget" class="col-form-label">Budget</label>
                                 <input type="text" class="form-control" id="budget" name="budget">
-                            </div>
-                            <div class="col-lg-6">
-                                <label for="month" class="col-form-label">Month</label>
-                                <br>
-                                <select name="month" id="month" class="form-control">
-                                    <option disabled>Month</option>
-                                    <option>January</option>
-                                    <option>February</option>
-                                    <option>March</option>
-                                    <option>April</option>
-                                    <option>May</option>
-                                    <option>June</option>
-                                    <option>July</option>
-                                    <option>August</option>
-                                    <option>September</option>
-                                    <option>October</option>
-                                    <option>November</option>
-                                    <option>December</option>
-                                </select>
                             </div>
                         </div>
                         <div class="row justify-content-center">
@@ -49,18 +30,22 @@
                     </form>
                 </div>  
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-8">
                 <div class="row ">
                     <form action="/main/expense" method="POST" class="col-12">
                         <div class="row">
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-3">
                                 <label for="category" class="col-form-label">Category</label>
                                 <input type="text" class="form-control" id="category" name="category" required>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-3">
                                 <label for="expense" class="col-form-label">Expense</label>
                                 <input type="text" class="form-control" id="expense" name="expense" required>
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="expense" class="col-form-label">Date</label>
+                                <input type="datetime-local" class="form-control" id="date" name="date" required>
                             </div>
                         </div>
                         <div class="row justify-content-center">
@@ -73,19 +58,26 @@
         </div>
                             
         <div class="row justify-content-center mt-5">
-            <div class="col-9 bg-success">
-                <ul>
+            ${expenses ? `
+                <div class="col-9">
+                <ul> 
                     ${expenses && expenses.map((expense)=>{
-                        return `<li> ${ expense.category } : ${ expense.amount_expense } <button id="${ expense.id }" type="button">x</button></li> `
+                        return `<li> ${ expense.category } : ${ expense.amount_expense} ${expense.date} <button id="${ expense.id }" type="button">x</button></li> `
                     }).join("")
                 }
                 </ul>
+                </div>
+                `: ""} 
                 
-            </div>
-            <p>total: <span id="total">${ budgets ? budgets.amount_budget : ""}</span></p>
+                ${budgets ? `     
+                <p>budget: <span id="total">${budgets ? budgets.amount : ""}</span></p>
+                <p>total: <span id="total">${budgets ? budgets.total : ""}</span></p>
+                <p>remaining: <span id="total">${budgets ? budgets.remaining : ""}</span></p>
+                `: ""
+            }
         </div>
     </div>
-
+    <script src=""></script>
     </body>
 
 </html>
