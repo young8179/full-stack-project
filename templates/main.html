@@ -62,7 +62,7 @@
                 <div class="col-9">
                 <ul> 
                     ${expenses && expenses.map((expense)=>{
-                        return `<li> ${ expense.category } : ${ expense.amount_expense} ${expense.date} <button id="${ expense.id }" type="button">x</button></li> `
+                        return `<li> ${ expense.category } : ${ expense.amount_expense} ${expense.date} <button class="remove" data-id=  "${ expense.id }" id="${ expense.id }" type="button">x</button></li> `
                     }).join("")
                 }
                 </ul>
@@ -77,7 +77,7 @@
             }
         </div>
     </div>
-    <script src=""></script>
+    <script src="/main.js"></script>
     </body>
 
 </html>
