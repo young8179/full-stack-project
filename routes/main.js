@@ -6,42 +6,32 @@ function checkAuth(req, res, next){
   if (req.session.user){
     next()
   }else {
-    res.redirect("/login")
+    res.redirect("/")
   }
 }
-// router.get("/", checkAuth, (req, res)=>{
-//   res.render("main", {
-//     locals:{
-//       user:req.session.user
-//     }
-//   })
-// })
-// router.use("/*", checkAuth)
-
-/* GET users listing. */
-router.get('/', checkAuth, function (req, res, next) {
-  
+router.get("/", checkAuth, (req, res)=>{
   db.Expense.findAll()
-    .then((expenses) => {
-      db.Budget.findAll()
-        .then((budgets) => {
-          db.User.findOne()
-            .then((users)=>{
-              
-              res.render('main', {
-                locals: {
-                  error: null,
-                  expenses: expenses,
-                  budgets: budgets,
-                  users: users
-                }
+  .then((expenses) => {
+    db.Budget.findAll()
+    .then((budgets) => {
+      
+      res.render('main', {
+        locals: {
+          error: null,
+          expenses: expenses,
+          budgets: budgets,
+          user:req.session.user
+        }
             })
-
+  
           })
         })
 
-    })
-});
+
+})
+// router.use("/*", checkAuth)
+
+/* GET users listing. */
 
 //===========================================================================
 router.post("/expense", (req, res)=>{
