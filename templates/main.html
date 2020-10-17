@@ -57,26 +57,29 @@
             </div>
         </div>
                             
-        <div class="row justify-content-center mt-5">
+        <div class="row justify-content-center mt-5" id="result">
             ${expenses ? `
                 <div class="col-9">
                 <ul> 
                     ${expenses && expenses.map((expense)=>{
-                        return `<li> ${ expense.category } : ${ expense.amount_expense} ${expense.date} <button class="remove" data-id=  "${ expense.id }" id="${ expense.id }" type="button">x</button></li> `
+                        return `<li id="${ expense.id }"> ${ expense.category } : ${ expense.amount_expense} ${expense.date} <button class="remove" data-id=  "${ expense.id }" id="${ expense.id }" type="button">x</button></li> `
                     }).join("")
                 }
                 </ul>
                 </div>
                 `: ""} 
-                
-                ${budgets ? `     
-                <p>budget: <span id="total">${budgets ? budgets.amount : ""}</span></p>
-                <p>total: <span id="total">${budgets ? budgets.total : ""}</span></p>
-                <p>remaining: <span id="total">${budgets ? budgets.remaining : ""}</span></p>
-                `: ""
-            }
+                <div id="render">
+                    ${budgets ? `     
+                    <p>budget: <span id="total">${budgets ? budgets.amount : ""}</span></p>
+                    <p>total: <span id="total">${budgets ? budgets.total : ""}</span></p>
+                    <p>remaining: <span id="total">${budgets ? budgets.remaining : ""}</span></p>
+                    `: ""
+                }
+
+                </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
     <script src="/main.js"></script>
     </body>
 
