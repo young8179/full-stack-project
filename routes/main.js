@@ -118,7 +118,47 @@ router.get("/logout", (req, res)=>{
 
 //===========remove button=================
 
+
+
+//delete=======================================
+router.get('/expense/:id', (req, res) => {
+  const { id } = req.params;
+  db.Expense.findOne({
+    where: {
+      id: id,
+      UserId : req.session.user.id
+    }
+  })
+    .then(expense=>{
+      if(!expense){
+        res.status(404).json({error: `Could not find Expense with id: ${id}`})
+        return;
+      }
+      res.status(204).json()
+    })
+});
+
+
+
+router.delete('/expense/:id', (req, res) => {
+  const { id } = req.params;
+  db.Expense.destroy({
+    where: {
+      id: id,
+      UserId : req.session.user.id
+    }
+  })
+    .then(rowsDeleted =>{
+      if (rowsDeleted === 1){
+        res.status(204).json()
+      }else if(rowsDeleted === 0){
+        res.status(404).json({error: `Could not find Expense with id: ${id}`})
+      }
+    })
+    .catch(e=>{
+      res.status(500).json( {error: "A database error occurred"})
+    })
+});
+
 module.exports = router;
-
-
 // rendering=========================================================================
