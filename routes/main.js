@@ -99,10 +99,22 @@ router.post('/budget', (req, res) => {
 });
 
 //logout===================================
+<<<<<<< HEAD
 router.get('/logout', (req, res) => {
   req.session.user = null;
   res.redirect('/');
 });
+=======
+router.get("/logout", (req, res)=>{
+  req.session.user = null
+  res.redirect("/")
+})
+
+
+//===========remove button=================
+
+
+>>>>>>> main
 
 //delete=======================================
 router.get('/expense/:id', (req, res) => {
