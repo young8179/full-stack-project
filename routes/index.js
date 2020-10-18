@@ -21,13 +21,7 @@ const checkAuth = (req, res, next) => {
   }
 };
 
-<<<<<<< HEAD
 router.post('/', (req, res) => {
-=======
-
-
-router.post('/', (req, res)=>{
->>>>>>> main
   // console.log('\n\nLogin triggered\n\n')
   if (!req.body.email || !req.body.password) {
     res.render('index', {
