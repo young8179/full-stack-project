@@ -8,50 +8,82 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/stylesheets/main.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
         <title>budget</title>
     </head>
 <body>
+    
+    <div class="jumbotron container-fluid">
+        
+        <div class="row  justify-content-end">
+            <ul class="nav ">
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">${ user.email }</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Logout</a>
+                </li>
+            </li>
+        </ul>
+        </div>
+        <div class="row">
+            <h1 class="display-4 col-lg-12 mb-2">Hello, world!</h1> <br>
+            <p class="lead col-lg-12 mt-3">The budgeting tool that makes handling your finances easy.</p>
+            <hr class="my-4">
+            <!-- <p class="col-lg-12">It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
+            <!-- <p class="lead"> -->
+            </p>
+        </div>
 
-    <div>
-        <img src="/stylesheets/images/main.png" alt="checking">
     </div>
+
 
 
     
     <div class="container-fluid">
         
-        <span>${ user.email }</span>
-        <a href="/">Logout</a>
 
         <div class="row justify-content-center">
             <div class="col-lg-11 border">
                 <div class="row ">
-                    <form action="/main/budget" method="POST" class="col-8">
-                        <div class="row">
-                            <div class="col-lg-10">
-                                <label for="budget" class="col-form-label">Please Enter Your Budget:</label>
-                                <input type="text" class="form-control" id="budget" name="budget">
-                            </div>
-                        </div>
-                        <div class="row justify-content-start">
-                            <button type="submit" class="btn btn-success mt-4 ml-3">Submit</button>
-                        </div>
+                    <div class="col-8">
 
-                    </form>
+                        <form action="/main/budget" method="POST">
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <label for="budget" class="col-form-label">Please Enter Your Budget:</label>
+                                    <input type="text" class="form-control" id="budget" name="budget">
+                                </div>
+                            </div>
+                            <div class="row justify-content-start">
+                                <button type="submit" class="btn btn-success mt-4 ml-3">Submit</button>
+                            </div>
+    
+                        </form>
+                    </div>
                     <div class="col-lg-3 justify-content-center mt-5" id="result">
                 
+                        
                         <div id="render" class="render">
                             ${budgets ? `     
                             ${ budgets.remaining < 0 ? `<em style="color: red;">${message}</em>`:''}
-                              
-                            <p>budget: <span id="total">${budgets ? budgets.amount : ""}</span></p>
-                            <p>total: <span id="total">${budgets ? budgets.total : ""}</span></p>
-                            <p>remaining: <span id="total">${budgets ? budgets.remaining : ""}</span></p>
+                            <div class="row">
+                                <i class="fas fa-university col-1 mr-3 mb-3"></i><p class="col-9">budget: <span id="total">${budgets ? budgets.amount : ""}</span></p>
+                            </div>
+                            <div class="row align-content-center">
+                                <i class="fas fa-money-check-alt col-1 mr-3 mb-3" style="font-size: 30px;"></i><p class="col-9">total: <span id="total">${budgets ? budgets.total : ""}</span></p>
+                            </div>
+                            <div class="row align-content-center">
+                                <i class="fas fa-piggy-bank col-1 mr-3"></i><p class="col-9">remaining: <span id="total">${budgets ? budgets.remaining : ""}</span></p>
+                            </div>
+                            
+                            
                             `: ""
                         }
         
                         </div>
                     </div>
+
                 </div>  
             </div>
             
@@ -82,24 +114,27 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="mb-5">
+            <div class="mb-5 col-6">
                 ${expenses ? `
-                    <div>
-                    <ul> 
+                    <h3 class="chart-head">Expenses:</h3>
+                    <ul class="row justify-content-center"> 
                         ${expenses && expenses.map((expense)=>{
-                            return `<li id="${ expense.id }"> ${ expense.category } : ${ expense.amount_expense} ${expense.date} <button class="remove" data-id=  "${ expense.id }" id="${ expense.id }" type="button">x</button></li> `
+                            return `
+                            <i class="fas fa-money-check-alt col-1" style="color: red;"></i>
+                            <li class="col-11 mb-2" id="${ expense.id }"> ${ expense.category } : ${ expense.amount_expense} ${expense.date} <button class="remove" data-id=  "${ expense.id }" id="${ expense.id }" type="button">x</button></li> `
                         }).join("")
                     }
                     </ul>
-                    </div>
+                    
                     `: ""} 
-
             </div>
+        </div>
         </div>                    
        
         <div class="row justify-content-md-center ">
             <div class="col-10 chart">
-                <canvas id="myChart" ></canvas>
+                <h3 class="chart-head mb-5">Expense Chart:</h3>
+                <canvas id="myChart" class="mb-5" ></canvas>
 
             </div>
         </div>
@@ -108,6 +143,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="/main.js"></script>
     <script src="/chart.js"></script>
+    
     
     </body>
 

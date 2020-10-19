@@ -3,15 +3,20 @@
     height: 20%;
 }
 
+.chart-head {
+    text-align:center;
+}
+
 .jumbotron {
-    background-image: url("./images/main.png");
-    background-size: auto cover;
+    background-image: url("./images/greenmoney.png");
+    background-size: cover;
+    height: 100%;
     background-repeat: no-repeat;
     font-family: 'Arial Black', Gadget, sans-serif;
 }
 
 .border {
-    border: solid;
+    border: solid 3px black !important;
     padding: 50px 50px 50px 50px;
     margin: 20px
 }
@@ -26,4 +31,16 @@
 
 .btn-success {
     width: 280px;
+}
+
+ul {
+    list-style-type:none;
+}
+
+i {
+    font-size: 35px;
+}
+
+.font {
+    font-size: 20px;
 }
