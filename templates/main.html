@@ -79,8 +79,9 @@
                 </ul>
                 </div>
                 `: ""} 
-                <div id="render" class="render"> 
+                <div id="render" class="render">
                     ${budgets ? `     
+                    ${ budgets.remaining < 10 ? `<em style="color: red;">${message}</em>`:''} 
                     <p>budget: <span id="total">${budgets ? budgets.amount : ""}</span></p>
                     <p>total: <span id="total">${budgets ? budgets.total : ""}</span></p>
                     <p>remaining: <span id="total">${budgets ? budgets.remaining : ""}</span></p>
