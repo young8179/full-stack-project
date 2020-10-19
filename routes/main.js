@@ -160,5 +160,59 @@ router.delete('/expense/:id', (req, res) => {
     })
 });
 
+
+// api =======================================================
+// router.get('/expenses',  (req, res) => {
+//   db.Expense.findAll()
+//     .then((expense)=>{
+//       res.json(expense)
+//     })
+//     .catch((error)=>{
+//       console.error(error)
+//       res.status(500).json({ error:`A Database Error Occurred` })
+//     })
+// });
+
+
+router.get('/expenses',  (req, res) => {
+  
+  db.Expense.findAll({
+    where: {
+      
+      UserId : req.session.user.id
+    }
+  })
+    .then((expense)=>{
+      if(!expense){
+        res.status(404).json({ error: `Could not find Todo with id: ${id}`})
+        return;
+      }
+      res.json(expense)
+    })
+    .catch((error)=>{
+      console.error(error)
+      res.status(500).json({ error:`A Database Error Occurred` })
+    })
+});
+
+
+// router.get('/expense/:id', (req, res) => {
+  
+//   db.Expense.findAll({
+//     where: {
+      
+//       id : req.session.user.id
+//     }
+//   })
+//     .then(expense=>{
+//       if(!expense){
+//         res.status(404).json({error: `Could not find Expense with id: ${id}`})
+//         return;
+//       }
+//       res.status(204).json()
+//     })
+// });
+
+
 module.exports = router;
 // rendering=========================================================================
