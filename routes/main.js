@@ -35,6 +35,7 @@ router.get("/", checkAuth, (req, res)=>{
           res.render('main', {
             locals: {
               error: null,
+              message: "Reminder: You are approaching your budget.",
               expenses: expenses,
               budgets:budgets && budgets.amount_budget ? {
                 amount: budgets.amount_budget,
