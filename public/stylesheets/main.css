@@ -16,9 +16,10 @@
 }
 
 .border {
-    border: solid 3px black !important;
+    border: solid 2px lightgray !important;
     padding: 50px 50px 50px 50px;
-    margin: 20px
+    margin: 20px;
+    border-radius: 20px;
 }
 
 .justify-content-center {
@@ -43,4 +44,17 @@ i {
 
 .font {
     font-size: 20px;
+}
+
+.expenses_bg{
+    /* background-color: rgba(183, 255, 0, 0.2); */
+    border-radius: 35px;
+    
+}
+.bg-bg{
+    background-image: linear-gradient(to bottom, rgb(196, 255, 205), rgb(255, 192, 167));
+}
+
+.box-bg{
+    background-color: white;
 }
