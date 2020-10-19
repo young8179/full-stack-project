@@ -1,4 +1,30 @@
 .chart {
     width: 20%;
     height: 20%;
+
+  <<<<<<< nina-branch
+}
+
+.jumbotron {
+    background-image: url("./images/main.png");
+    background-size: auto cover;
+    background-repeat: no-repeat;
+    font-family: 'Arial Black', Gadget, sans-serif;
+}
+
+.col-12 {
+    border: solid;
+    padding: 50px 50px 50px 50px;
+    margin: 20px 20px 20px 20px;
+}
+
+.justify-content-center {
+    margin: 20px 20px 20px 20px;
+}
+
+.remove {
+    color:red;
+=======
+
+  >>>>>>> main
 }
