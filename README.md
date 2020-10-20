@@ -39,4 +39,4 @@ Site Walk-Through:
 
 2. The website also used lots of bootstrap, we created inputs, buttons, cards, navbars, all through using the link. The majority of the CSS was just sizing and moving the containers/images around to make it look congruent with the style we wanted. By creating ids/classes and adding them onto our html, we were able to access the specific styling details. So, much of CSS was trial and error - seeing what worked and what didn't. 
 
-3. The sequelize 
+3. The database was created using four tables, and three of those tables (budget, expenses, and goal setting) were then connected with a user table. From there, we used sequelize, to create our own API, in order to integrate the data from our database in our website.
