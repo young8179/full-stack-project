@@ -14,7 +14,7 @@ Languages/Technology:
 - Chart JS
 
 Site Walk-Through:
-- The website, Sugar Oppa, is a fully functional budgeting tool that helps keep your finances in check. The main page is followed by two seperate pages: register page and login page. Once the user creates an account and logins in, they can start budgeting!
+- The website, Sugar Oppa, is a fully functional budgeting tool that helps keep your finances in check. The main page comes after two seperate pages: the register page and the login page. The user is first greeted by the login page, where they can enter their login details. However, if the user does not have an account, they may click the register button. From there, they can visit the main page and start improving the future of their finances by taking care of their budgets in the present. 
 
 ![](imagesforreadme/login.png)
 
@@ -24,11 +24,12 @@ Site Walk-Through:
 
 ![](imagesforreadme/home.png)
 
-- After the user has entered all the necessary components: budget, category, catgegory amount, and date/time - a colorful donut chart will appear below to show a visual representation of their transaction. 
+- After the user has entered all the necessary components: budget, category, catgegory amount, and date/time - a list of expenses and a colorful donut chart will appear below to show a visual representation of their transactions. The user can also collapse any specific spection of their donut chart by clicking the colorful labels located above.
 
+![](imagesforreadme/expenses.png)
 ![](imagesforreadme/chart.png)
 
--Saving
+- The website also takes into account a user's saving. The user can create a name for a particular financial goal they have in mind, and add an amount they would like to save for that goal. For an example, the user may be saving for a vehicle and intend on saving a specific amount. The remaining budget is atuomatically added to the users savings. 
 
 ![](imagesforreadme/saving.png)
 
