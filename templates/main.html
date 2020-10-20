@@ -176,6 +176,47 @@
 
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+        
+        <!-- code for goal-setting inside following div -->
+        <div class="row justify-content-center">
+            <div class="col-lg-11 border box-bg">
+                <div class="row ">
+                    <form action="/main/goalsetting" method="POST" class="col-9">
+                        <div class="row">
+
+                            <div class="col-lg-4">
+                                <label for="category" class="col-form-label">Create a name for a savings goal:</label>
+                                <input type="text" class="form-control" id="goal_name" name="goal_name" required>
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="expense" class="col-form-label">Savings Goal Amount:</label>
+                                <input type="text" class="form-control" id="saving_goal" name="saving_goal" required>
+                            </div>
+                        </div>
+                        <div class="row justify-content-start">
+                            <button type="submit" class="btn btn-success mt-4 ml-3">Submit</button>
+                        </div>
+                    </form>
+                    <div class="col-3">
+                        <p>  Goal: ${ goalSettings ? goalSettings.goal_name : ""}</p><br>
+                        <p> Savings Goal: ${ goalSettings ? goalSettings.saving_goal : ""}</p><br>
+                        <p>Saving: ${budgets ? budgets.remaining : ""}</p>
+
+                    </div>
+                </div>  
+            </div>
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
