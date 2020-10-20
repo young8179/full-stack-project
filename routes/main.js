@@ -33,6 +33,9 @@ router.get("/", checkAuth, (req, res)=>{
         .then((budgets) => {
           console.log(total(expenses));
           res.render('main', {
+            partials: {
+              head: "/partial/head"
+            },
             locals: {
               title: "Sugar-Oppa",
               error: null,
@@ -60,6 +63,9 @@ router.get("/", checkAuth, (req, res)=>{
 router.post("/expense", (req, res)=>{
   if(!req.body.expense || !req.body.category || !req.body.date){
     res.render("main", {
+      partials: {
+        head: "/partial/head"
+      },
       locals: {
         error: "Please submit all required field.",
         expenses: null,
@@ -89,6 +95,9 @@ router.post("/expense", (req, res)=>{
 router.post("/budget", (req, res) => {
   if(!req.body.budget){
     res.render("main", {
+      partials: {
+        head: "/partial/head"
+      },
       locals: {
         error: "Please submit all required fields.",
         budgets: null,
