@@ -216,7 +216,7 @@ router.get('/expenses',  (req, res) => {
 // });
 
 
-//===========================================================================
+//============================ goal setting ===============================================
 router.post("/goalsetting", (req, res)=>{
   if(!req.body.goal_name || !req.body.saving_goal){
     res.render("main", {
@@ -228,11 +228,9 @@ router.post("/goalsetting", (req, res)=>{
     })
     return;
   }
-  db.Expense.create({
-    category: req.body.category,
-    amount_expense: req.body.expense,
-    date: req.body.date,
-    UserId: req.session.user.id
+  db.GoalSetting.create({
+    goal_name: req.body.goal_name,
+    saving_goal: req.body.saving_goal,
   })
   
   .then((expenses)=>{
