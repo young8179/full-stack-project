@@ -231,10 +231,10 @@ router.post("/goalsetting", (req, res)=>{
   db.GoalSetting.create({
     goal_name: req.body.goal_name,
     saving_goal: req.body.saving_goal,
+    UserId: req.session.user.id
   })
   
-  .then((expenses)=>{
-    
+  .then((goal_name, saving_goal)=>{
     
     res.redirect("/main")
   })
