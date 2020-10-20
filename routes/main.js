@@ -31,30 +31,46 @@ router.get("/", checkAuth, (req, res)=>{
         ]
       })
         .then((budgets) => {
-          console.log(total(expenses));
-          res.render('main', {
-            partials: {
-              head: "/partial/head"
-            },
-            locals: {
-              title: "Sugar-Oppa",
-              error: null,
-              message: "Reminder: You are over budget.",
-              expenses: expenses,
-              budgets:budgets && budgets.amount_budget ? {
-                amount: budgets.amount_budget,
-                total: total(expenses),
-                remaining: budgets.amount_budget - total(expenses)
-              }:null,
-              user: req.session.user
+          
+          db.GoalSetting.findOne({
+            where:{
+              UserId: req.session.user.id
             }
           })
-
-        })
+          .then((goalSettings)=>{
+            res.render('main', {
+              partials: {
+                head: "/partial/head"
+              },
+              locals: {
+                title: "Sugar-Oppa",
+                error: null,
+                message: "Reminder: You are over budget.",
+                expenses: expenses,
+                
+                budgets:budgets && budgets.amount_budget ? {
+                  amount: budgets.amount_budget,
+                  total: total(expenses),
+                  remaining: budgets.amount_budget - total(expenses),
+                  
+                }:null,
+                goal_name: goalSettings.goal_name,
+                saving_goal: goalSettings.saving_goal,
+                
+                user: req.session.user
+              }
+            })
+                })
+              })
+          
+        
     })
 
 
 })
+
+
+
 // router.use("/*", checkAuth)
 
 /* GET users listing. */
@@ -226,6 +242,38 @@ router.get('/expenses',  (req, res) => {
 
 
 //============================ goal setting ===============================================
+
+// router.get("/goalsetting", checkAuth, (req, res)=>{
+//   db.GoalSetting.findOne({
+//     where: {
+//       UserId: req.session.user.id,
+//     }
+//   })
+//   .then((goalSetting)=>{
+//     if(!goalSetting){
+//       res.status(404).json({ error: `Could not find goal}`})
+//       return;
+//     }
+//     res.json(expense)
+//   })
+//   .catch((error)=>{
+//     console.error(error)
+//     res.status(500).json({ error:`A Database Error Occurred` })
+//   })
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
 router.post("/goalsetting", (req, res)=>{
   if(!req.body.goal_name || !req.body.saving_goal){
     res.render("main", {
@@ -243,7 +291,7 @@ router.post("/goalsetting", (req, res)=>{
     UserId: req.session.user.id
   })
   
-  .then((goal_name, saving_goal)=>{
+  .then((goalsetting)=>{
     
     res.redirect("/main")
   })
