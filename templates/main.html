@@ -3,13 +3,14 @@
     <head>
         
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+       
+       
+       
+       
         <link rel="stylesheet" href="/stylesheets/main.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
         <title>${ title }</title>
+        ${head}
     </head>
 <body class="bg-bg">
     
@@ -115,15 +116,23 @@
                 </div>  
             </div>
         </div>
-        <div class="row justify-content-center">
+        <!-- big screen -->
+        <div class="row justify-content-center" id="big">
             <h3 class="chart-head col-12">Expenses:</h3>
-            <div class="mb-5 col-lg-5 col-md-6 col-sm-11 expenses_bg">
+            <div class="mb-5 col-11 expenses_bg border box-bg">
+                
+
+
                 ${expenses ? `
-                    <ul class="row justify-content-center"> 
+                    <ul class="list-group"> 
                         ${expenses && expenses.map((expense)=>{
                             return `
-                            <i class="fas fa-money-check-alt col-lg-1 col-md-1 col-sm-2" style="color: red;"></i>
-                            <li class="col-lg-11 col-md-11 mb-2 col-sm-10" id="${ expense.id }"> ${ expense.category } : ${ expense.amount_expense} ${expense.date} <button class="remove" data-id=  "${ expense.id }" id="${ expense.id }" type="button">x</button></li> `
+                            <li class="list-group-item d-flex justify-content-between align-items-center" id="${ expense.id }">
+                                <i class="fas fa-money-check-alt col-lg-1 col-md-1 col-sm-2" style="color: red;"></i>
+                                <span class= "mr-auto">${ expense.category } : ${ expense.amount_expense} ${expense.date}</span>
+                                <button class="remove" data-id=  "${ expense.id }" id="${ expense.id }" type="button">x</button>
+                            </li>
+                            `
                         }).join("")
                     }
                     </ul>
@@ -131,10 +140,37 @@
                     `: ""} 
             </div>
         </div>
+
+        <!-- small screen -->
+        <div class="row justify-content-center small-screen" id="small">
+            <h3 class="chart-head col-12">Expenses:</h3>
+            <div class="mb-5 col-11 expenses_bg border box-bg">
+                
+
+
+                ${expenses ? `
+                    <ul class="list-group"> 
+                        ${expenses && expenses.map((expense)=>{
+                            return `
+                            <li class="list-group-item d-flex justify-content-between align-items-center" id="${ expense.id }">
+                                <i class="fas fa-money-check-alt col-lg-1 col-md-1 col-sm-2" style="color: red;"></i>
+                                <span class= "mr-auto">${ expense.category } : ${ expense.amount_expense} </span>
+                                <button class="remove" data-id=  "${ expense.id }" id="${ expense.id }" type="button">x</button>
+                            </li>
+                            `
+                        }).join("")
+                    }
+                    </ul>
+                    
+                    `: ""} 
+            </div>
+        </div>
+        <!-- ============================== -->
+
         </div>                    
        
         <div class="row justify-content-md-center ">
-            <div class="col-10 chart">
+            <div class="col-12 chart">
                 <h3 class="chart-head mb-5">Expense Chart:</h3>
                 <canvas id="myChart" class="mb-5" ></canvas>
 
