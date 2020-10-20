@@ -30,7 +30,7 @@ Site Walk-Through:
 
 -Saving
 
-![](imagesforreadme/savings.png)
+![](imagesforreadme/saving.png)
 
 -------------------------------------------
 
