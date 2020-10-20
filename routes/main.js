@@ -54,8 +54,7 @@ router.get("/", checkAuth, (req, res)=>{
                   remaining: budgets.amount_budget - total(expenses),
                   
                 }:null,
-                goal_name: goalSettings.goal_name,
-                saving_goal: goalSettings.saving_goal,
+                goalSettings: goalSettings,
                 
                 user: req.session.user
               }

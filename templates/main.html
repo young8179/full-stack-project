@@ -192,7 +192,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-11 border box-bg">
                 <div class="row ">
-                    <form action="/main/goalsetting" method="POST" class="col-12">
+                    <form action="/main/goalsetting" method="POST" class="col-9">
                         <div class="row">
 
                             <div class="col-lg-4">
@@ -208,8 +208,12 @@
                             <button type="submit" class="btn btn-success mt-4 ml-3">Submit</button>
                         </div>
                     </form>
-                    <p>  goal: ${ goalSettings ? goalSettings.goal_name : ""}</p>
-                    <p> goal_amount: ${ goalSettings ? goalSettings.saving_goal : ""}</p>
+                    <div class="col-3">
+                        <p>  Goal: ${ goalSettings ? goalSettings.goal_name : ""}</p><br>
+                        <p> Savings Goal: ${ goalSettings ? goalSettings.saving_goal : ""}</p><br>
+                        <p>Saving: ${budgets ? budgets.remaining : ""}</p>
+
+                    </div>
                 </div>  
             </div>
         </div>
