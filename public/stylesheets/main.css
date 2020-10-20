@@ -3,17 +3,27 @@
     height: 20%;
 }
 
+.black{
+    color: black;
+}
+
+.chart-head {
+    text-align:center;
+}
+
 .jumbotron {
-    background-image: url("./images/main.png");
-    background-size: auto cover;
+    background-image: url("./images/greenmoney.png");
+    background-size: cover;
+    height: 100%;
     background-repeat: no-repeat;
     font-family: 'Arial Black', Gadget, sans-serif;
 }
 
 .border {
-    border: solid;
+    border: solid 2px lightgray !important;
     padding: 50px 50px 50px 50px;
-    margin: 20px
+    margin: 20px;
+    border-radius: 20px;
 }
 
 .justify-content-center {
@@ -26,4 +36,80 @@
 
 .btn-success {
     width: 280px;
+}
+
+ul {
+    list-style-type:none;
+}
+
+i {
+    font-size: 35px;
+}
+
+.font {
+    font-size: 20px;
+}
+
+.icon-budgets{
+    color: green;
+}
+
+.expenses_bg{
+    /* background-color: rgba(183, 255, 0, 0.2); */
+    border-radius: 35px;
+    
+}
+
+.dollar{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    position: absolute;
+    top: 1%;
+    left: 40%;
+    height: 350px;
+    filter: opacity(10%);
+    
+}
+.dollar-2{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    position: absolute;
+    
+    left: 42%;
+    top: -25px;
+    height: 280px;
+    filter: opacity(10%);
+    
+}
+
+
+
+
+
+.bg-bg{
+    background-image: linear-gradient(to bottom, rgb(196, 255, 205), rgb(255, 192, 167));
+}
+
+.box-bg{
+    background-color: white;
+}
+
+/* ====================================================================== */
+
+/* .box-bg{
+    background-image: linear-gradient(to right, rgb(196, 255, 205), rgb(255, 192, 167));
+}
+
+.expenses_bg{
+    background-color: rgba(151, 255, 167, 0.5);
+}
+ */
+
+
+ @media only screen and (max-width: 1290px) {
+    .expenses_bg{
+        width: 100% ;
+    }
 }
