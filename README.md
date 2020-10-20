@@ -28,6 +28,10 @@ Site Walk-Through:
 
 ![](imagesforreadme/chart.png)
 
+-Saving
+
+![](imagesforreadme/savings.png)
+
 -------------------------------------------
 
 1. The website utilized Express for our HTTP framework by using mostly get, post, and delete when we needed to retrieve, send data back to the server, or delete. The get method is used to grab data from the server, the post method sends that data to the server and then creates it, while assigning that to the user that has logged in. The delete method was used to delete any input the user had added - in this case, the expenses and how much they were.
