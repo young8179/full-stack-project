@@ -11,6 +11,7 @@ Languages/Technology:
 - Express
 - Postgre SQL
 - Beekeeper
+- Chart JS
 
 Site Walk-Through:
 - The website, Sugar Oppa, is a fully functional budgeting tool that helps keep your finances in check. The main page is followed by two seperate pages: register page and login page. Once the user creates an account and logins in, they can start budgeting!
@@ -32,3 +33,5 @@ Site Walk-Through:
 1. The website utilized Express for our HTTP framework by using mostly get, post, and delete when we needed to retrieve, send data back to the server, or delete. The get method is used to grab data from the server, the post method sends that data to the server and then creates it, while assigning that to the user that has logged in. The delete method was used to delete any input the user had added - in this case, the expenses and how much they were.
 
 2. The website also used lots of bootstrap, we created inputs, buttons, cards, navbars, all through using the link. The majority of the CSS was just sizing and moving the containers/images around to make it look congruent with the style we wanted. By creating ids/classes and adding them onto our html, we were able to access the specific styling details. So, much of CSS was trial and error - seeing what worked and what didn't. 
+
+3. The sequelize 
