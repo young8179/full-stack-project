@@ -215,5 +215,42 @@ router.get('/expenses',  (req, res) => {
 // });
 
 
+//===========================================================================
+router.post("/goalsetting", (req, res)=>{
+  if(!req.body.goal_name || !req.body.saving_goal){
+    res.render("main", {
+      locals: {
+        error: "Please submit all required field.",
+        expenses: null,
+        budgets: null
+      }
+    })
+    return;
+  }
+  db.Expense.create({
+    category: req.body.category,
+    amount_expense: req.body.expense,
+    date: req.body.date,
+    UserId: req.session.user.id
+  })
+  
+  .then((expenses)=>{
+    
+    
+    res.redirect("/main")
+  })
+  .catch((error)=>{
+    console.error(error)
+    res.status(500).json({ error: "something wrong"})
+  })
+})
+
+
+
+
+
+
+
+
 module.exports = router;
 // rendering=========================================================================
