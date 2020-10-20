@@ -6,9 +6,19 @@
     color: #fff;
     background-color: #ff0000;
 }
+
 body {
-    background: rgb(0, 0, 0) !important;
+    background-image: url("./images/honeycomb.svg") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 90vh;
 }
+
+.logo_title{
+    padding-top: 20px;
+    display: inline-block;
+}
+
 .card {
     border: 1px solid #28a745;
 }
@@ -24,8 +34,8 @@ body {
     font-family: sans-serif;
     font-size: 20px;
     font-weight: 600 !important;
-    margin-top: 10px;
     border-bottom: 0;
+    padding: 0 !important;
 }
 
 .input-group-prepend span{
@@ -42,6 +52,7 @@ input:focus{
 
 .login_btn{
     width: 130px;
+    margin-left: 10px;
 }
 
 .login_btn:hover{
@@ -88,4 +99,9 @@ input:focus{
     background-color: #e9ecef;
     border: 1px solid #ced4da;
     border-radius: 0;
+}
+
+.img-box {
+    width: 95%;
+
 }
