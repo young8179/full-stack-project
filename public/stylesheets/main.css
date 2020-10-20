@@ -104,12 +104,21 @@ i {
 
 .expenses_bg{
     background-color: rgba(151, 255, 167, 0.5);
-}
- */
+} */
 
+#big {
+    display: block;
+    margin-left: 7%;
+}
+#small {display: none;}
 
  @media only screen and (max-width: 1290px) {
     .expenses_bg{
         width: 100% ;
     }
+}
+
+@media only screen and (max-width: 800px) {
+    #big {display: none;}
+    #small {display: block;}
 }
