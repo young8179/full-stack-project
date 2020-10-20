@@ -34,6 +34,7 @@ router.get("/", checkAuth, (req, res)=>{
           console.log(total(expenses));
           res.render('main', {
             locals: {
+              title: "Sugar-Oppa",
               error: null,
               message: "Reminder: You are over budget.",
               expenses: expenses,

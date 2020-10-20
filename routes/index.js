@@ -10,6 +10,7 @@ const bcrypt = require("bcrypt");
 router.get('/', (req, res) => {
   res.render('index', {
     locals: {
+      title: "Login",
       error: null,
     },
   });

@@ -16,6 +16,7 @@ const db = require('../models');
 router.get('/', (req, res) => {
   res.render('register', {
     locals: {
+      title: "register",
       error: null,
     },
   });
