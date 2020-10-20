@@ -15,6 +15,9 @@ const db = require('../models');
 
 router.get('/', (req, res) => {
   res.render('register', {
+    partials: {
+      head: "/partial/head"
+    },
     locals: {
       title: "register",
       error: null,
@@ -25,6 +28,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   if (!req.body.email || !req.body.password || !req.body.name) {
     res.render('register', {
+      
       locals: {
         error: 'please submit all required fields',
       },
