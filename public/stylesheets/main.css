@@ -122,3 +122,23 @@ i {
     #big {display: none;}
     #small {display: block;}
 }
+
+footer {
+    background-color: white;
+}
+
+.footer-img {
+    margin-bottom: 3%;
+}
+
+.footer-list {
+    margin-bottom: 2%;
+}
+
+.div-list {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    border: solid;
+    
+}
