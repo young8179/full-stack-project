@@ -1,12 +1,11 @@
 
-function remove(id) {
-    axios
+async function remove(id) {
+    await axios
         .delete(`/main/expense/${id}`)
         .then((res) => {
             
             const element = document.getElementById(id)
             element.parentNode.removeChild(element)
-           
             
 
             
@@ -24,11 +23,10 @@ function remove(id) {
 
 const removeButtons = document.querySelectorAll(".remove")
 removeButtons.forEach(button =>{
-    button.addEventListener("click", ()=>{
-        remove(button.dataset.id)
+    button.addEventListener("click", async ()=>{
+        await remove(button.dataset.id)
         // render()
-        const location = document.getElementById("render")
-        window.location.reload(true)
+        
     })
 })
 
