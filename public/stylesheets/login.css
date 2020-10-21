@@ -1,10 +1,10 @@
-#register-button {
-    color: #ff0000 !important;
+#register {
+    color: red 
 }
 
-#register-button:hover {
+#register:hover {
     color: #fff;
-    background-color: #ff0000;
+    /* background-color: #ff0000; */
 }
 
 body {
@@ -105,3 +105,7 @@ input:focus{
     width: 95%;
 
 }
+
+/* #register{
+    color: #ff0000;
+} */
