@@ -25,7 +25,7 @@ const removeButtons = document.querySelectorAll(".remove")
 removeButtons.forEach(button =>{
     button.addEventListener("click", async ()=>{
         await remove(button.dataset.id)
-        // render()
+        document.location.reload(true)
         
     })
 })
